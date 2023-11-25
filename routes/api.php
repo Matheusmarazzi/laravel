@@ -14,6 +14,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+use App\Http\Controllers\UserController;
+
+Route::post('user/login',
+   [UserController::class,'login']);
+
+Route::post('user/create',
+   [UserController::class,'apiStore']);
+
+Route::put('user/{u}',
+   [UserController::class,'apiUpdate']);
+
+Route::delete('user/{id}',
+   [UserController::class,'apiDelete']);
+
+Route::get('user/{u}',
+   [UserController::class,'apiShow']);
